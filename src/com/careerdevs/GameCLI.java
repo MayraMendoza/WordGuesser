@@ -7,14 +7,15 @@ import java.util.Random;
 
 public class GameCLI {
     public static String[] playableWords;
-    public static ArrayList randomWord;
+    public static ArrayList randomWordArray;
     public static ArrayList guessedWord;
+
 
     public static void main(String[] args) {
 //        mainMenu();
 
         wordInitializer();
-        System.out.println(randomlySelectedWord());
+        wordSize();
 
 
 
@@ -46,13 +47,31 @@ public class GameCLI {
 
     }
     private static String randomlySelectedWord(){
+        //get playable words length
         int arrayLength = playableWords.length;
-        System.out.println(arrayLength);
+        System.out.println("list size: "+ arrayLength);
         // randomly select a number that's between 0 and array length (-1) .
         Random rand= new Random();
-        int int_Random = rand.nextInt(arrayLength);
-        System.out.println(int_Random);
-       String word = playableWords[int_Random];
-        return word;
+        int randomlyGeneratedNum = rand.nextInt(arrayLength);
+        System.out.println("random number: " + randomlyGeneratedNum);
+
+        return playableWords[randomlyGeneratedNum];
+    }
+    private static void wordSize(){
+       String randomWord = randomlySelectedWord();
+       int randomWordSize = randomWord.length();
+        System.out.println("word size: " +randomWordSize);
+        System.out.println("random word selected: "+randomWord);
+        randomWordArray = new ArrayList<>();
+        for(int i = 0; i < randomWordSize; i++){
+            randomWordArray.add('_');
+
+        }
+        System.out.println("print out");
+        for(int j = 0; j < randomWordSize; j++){
+            System.out.print( randomWordArray.get(j)+" ");
+
+        }
+
     }
 }
