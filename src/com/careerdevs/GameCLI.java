@@ -16,6 +16,7 @@ public class GameCLI {
 
         wordInitializer();
         wordSize();
+        userGuessedWord();
 
 
 
@@ -63,15 +64,19 @@ public class GameCLI {
         System.out.println("word size: " +randomWordSize);
         System.out.println("random word selected: "+randomWord);
         randomWordArray = new ArrayList<>();
-        for(int i = 0; i < randomWordSize; i++){
-            randomWordArray.add('_');
 
-        }
         System.out.println("print out");
         for(int j = 0; j < randomWordSize; j++){
+            // how does randomWord add all _ before printing out?
+            randomWordArray.add('_');
             System.out.print( randomWordArray.get(j)+" ");
 
         }
 
+    }
+    private static void userGuessedWord(){
+        String userInputGuess = UserInput.readString("\nPlease enter your Guess: ");
+        System.out.println(userInputGuess);
+        System.out.println(userInputGuess.length());
     }
 }

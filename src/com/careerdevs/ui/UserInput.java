@@ -9,7 +9,7 @@ public class UserInput {
     public static String readString(String question){
 
         while (true){
-            System.out.println(question);
+            System.out.print(question);
             try{
                 String answer = scanner.nextLine();
 
