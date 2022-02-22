@@ -41,6 +41,7 @@ public class GameCLI {
                 "paint", "quick", "radar",
                 "seize", "taste", "under",
                 "value", "wages"
+
         };
 
     }
