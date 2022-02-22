@@ -50,4 +50,26 @@ public class UserInput {
 
         }
     }
+    public static char readChar(String question){
+        while (true){
+            System.out.print(question);
+            try{
+                String answer = scanner.nextLine();
+
+                while(answer.isBlank() || answer.length()>1||!Character.isAlphabetic(answer.charAt(0))){
+                    System.out.println("You must enter one character A-Z");
+                    System.out.println(question);
+                    answer = scanner.nextLine();
+                }
+                return answer.charAt(0);
+
+            } catch (InputMismatchException e){
+                System.out.println(question);
+                scanner.nextLine();
+                System.out.println("Entry invalid, please try again");
+
+            }
+        }
+
+    }
 }
