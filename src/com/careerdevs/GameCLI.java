@@ -8,7 +8,9 @@ import java.util.Random;
 public class GameCLI {
     public static String[] playableWords;
     public static ArrayList randomWordArray;
-    public static ArrayList guessedWord;
+    public static ArrayList guessedWordArray;
+    public static int randomWordSize;
+    private static String randomWord;
 
 
     public static void main(String[] args) {
@@ -16,7 +18,7 @@ public class GameCLI {
 
         wordInitializer();
         wordSize();
-        userGuessedWord();
+
 
 
 
@@ -59,24 +61,57 @@ public class GameCLI {
         return playableWords[randomlyGeneratedNum];
     }
     private static void wordSize(){
-       String randomWord = randomlySelectedWord();
-       int randomWordSize = randomWord.length();
+       randomWord = randomlySelectedWord();
+        randomWordSize = randomWord.length();
         System.out.println("word size: " +randomWordSize);
         System.out.println("random word selected: "+randomWord);
         randomWordArray = new ArrayList<>();
+        guessedWordArray = new ArrayList<>();
+
 
         System.out.println("print out");
         for(int j = 0; j < randomWordSize; j++){
+            // add all random word characters into an array
+            randomWordArray.add(randomWord.charAt(j));
             // how does randomWord add all _ before printing out?
-            randomWordArray.add('_');
-            System.out.print( randomWordArray.get(j)+" ");
+            guessedWordArray .add('_');
+            System.out.print( guessedWordArray .get(j)+" ");
+
+
+        }
+        System.out.println("\nsize");
+//        for(int k = 0; k < randomWordSize; k++){
+//
+//
+//
+//            System.out.println(randomWordArray.get(k));
+//
+//        }
+
+userGuessedCharacter();
+    }
+    private static void userGuessedCharacter(){
+
+        char guessedLetter = UserInput.readChar("Please enter your Guess: ");
+        char upperCaseguessedLetter = Character.toUpperCase(guessedLetter);
+        for(int j = 0; j < randomWordSize; j++){
+
+            System.out.println(upperCaseguessedLetter+ "     letter entered");
+            System.out.println(Character.toUpperCase(randomWord.charAt(j))+"   letter in comp");
+
+
+
+            if(upperCaseguessedLetter == Character.toUpperCase(randomWord.charAt(j))){
+                guessedWordArray.set(j,randomWord.charAt(j));
+
+            }
+
+
 
         }
 
-    }
-    private static void userGuessedWord(){
-        String userInputGuess = UserInput.readString("\nPlease enter your Guess: ");
-        System.out.println(userInputGuess);
-        System.out.println(userInputGuess.length());
+        for(int i = 0; i<randomWordSize; i++){
+            System.out.print( guessedWordArray.get(i)+" ");
+        }
     }
 }
