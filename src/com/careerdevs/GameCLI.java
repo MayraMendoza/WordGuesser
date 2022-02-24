@@ -9,7 +9,7 @@ public class GameCLI {
     public static String[] playableWords;
     public static ArrayList randomWordArray;
     public static ArrayList guessedWordArray;
-    private static ArrayList wrongGuessesArray;
+    private static ArrayList allGuessesArray;
     public static int randomWordSize;
     private static String randomWord;
     private static int guessesLeft;
@@ -82,7 +82,7 @@ public class GameCLI {
 
         }
         System.out.println("\n");
-        wrongGuessesArray = new ArrayList<>();
+        allGuessesArray = new ArrayList<>();
         guessesLeft = 7;
         while(guessesLeft>0){
             userGuessedCharacter();
@@ -95,19 +95,21 @@ public class GameCLI {
 
 
         char guessedLetter = UserInput.readChar("Please enter your Guess: ");
-        char upperCaseguessedLetter = Character.toUpperCase(guessedLetter);
+        char upperCaseguessedLetter = Character.toLowerCase(guessedLetter);
 //        wrongGuessesArray = new ArrayList<>();
-        wrongGuessesArray.add(upperCaseguessedLetter);
+        allGuessesArray.add(upperCaseguessedLetter);
+
 
         for(int j = 0; j < randomWordSize; j++){
 
             System.out.println(upperCaseguessedLetter+ "     letter entered");
-            System.out.println(Character.toUpperCase(randomWord.charAt(j))+"   letter in comp");
+            System.out.println(Character.toLowerCase(randomWord.charAt(j))+"   letter in comp");
 
 
             // Print what current
-            if(upperCaseguessedLetter == Character.toUpperCase(randomWord.charAt(j))) {
+            if(upperCaseguessedLetter == Character.toLowerCase(randomWord.charAt(j))) {
                 guessedWordArray.set(j, randomWord.charAt(j));
+                System.out.println("working?");
 
             }
 
@@ -123,13 +125,13 @@ public class GameCLI {
         }
 
 
-        System.out.println("\n"+ wrongGuessesArray.size()+"wrong guess array size");
+        System.out.println("\n"+ allGuessesArray.size()+"wrong guess array size");
 
         // this prints out all the guesses array
 
-        for(int k = 0; k < wrongGuessesArray.size(); k++){
+        for(int k = 0; k < allGuessesArray.size(); k++){
 
-            System.out.print( wrongGuessesArray.get(k)+" ,");
+            System.out.print( allGuessesArray.get(k)+" ,");
         }
         System.out.println("\n");
 
