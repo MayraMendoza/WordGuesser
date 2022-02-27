@@ -118,11 +118,11 @@ public class GameCLIFinal {
                 mainMenu();
             }
         }
-            if (guessesLeft <= 0) {
-                System.out.println("You do not have any guesses left. Thank you for playing!");
-                System.out.println("The correct word is: " + randomWord);
-                mainMenu();
-            }
+
+//                System.out.println("You do not have any guesses left. Thank you for playing!");
+//                System.out.println("The correct word is: " + randomWord);
+//                mainMenu();
+
 
     }
     private static void userGuessedCharacter(){
