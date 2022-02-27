@@ -81,7 +81,6 @@ public class GameCLIFinal {
         // correct character guesses.
         guessedWordArray = new ArrayList<>();
 
-
         // this will print out empty _______
         for(int j = 0; j < randomWordSize; j++){
             // add all random word characters into an array
@@ -93,10 +92,6 @@ public class GameCLIFinal {
 
         }
         System.out.println("\n");
-
-        // write summary.
-
-
 
         MainGame();
     }
@@ -116,21 +111,18 @@ public class GameCLIFinal {
                 System.out.println("The word is: " + randomWord);
                 System.out.println("Congratulations! you guessed the word with " + totalWrongGuesses + " wrong guesses.");
 
-
                 // set count to 0 for next game.
                 count = 0;
 
+                // need to fix this
                 mainMenu();
             }
         }
-
             if (guessesLeft <= 0) {
                 System.out.println("You do not have any guesses left. Thank you for playing!");
                 System.out.println("The correct word is: " + randomWord);
                 mainMenu();
             }
-
-
 
     }
     private static void userGuessedCharacter(){
@@ -158,11 +150,11 @@ public class GameCLIFinal {
 
             // replace all letters that matched to random word array (at the corresponding spot).
             if(lowerCaseguessedLetter == Character.toLowerCase(randomWord.charAt(j))) {
+                // count how many placeholders are being replaced with letters.
                 count++;
-                System.out.println(count +" count in loop");
                 guessedWordArray.set(j, randomWord.charAt(j));
-
             }else{
+                // count how many letters did not match
                 wrongGuesses++;
             }
         }
@@ -171,7 +163,7 @@ public class GameCLIFinal {
             totalWrongGuesses++;
         }
 
-        // this prints out guessed word array  ------- with correct letters
+        // print out guessed word array  ------- with correct letters
         for(int i = 0; i<randomWordSize; i++){
             System.out.print( guessedWordArray.get(i)+" ");
         }
@@ -185,7 +177,6 @@ public class GameCLIFinal {
             System.out.print( allGuessesArray.get(k)+" ,");
         }
         System.out.println("\n");
-
     }
 
     private static void endGame(){
