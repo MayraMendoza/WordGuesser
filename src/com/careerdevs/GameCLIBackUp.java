@@ -6,22 +6,25 @@ import com.careerdevs.ui.UserInputFinal;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class GameCLIFinal {
-    private static String[] playableWords;
-    private static ArrayList randomWordArray;
-    private static ArrayList guessedWordArray;
+public class GameCLIBackUp {
+    public static String[] playableWords;
+    public static ArrayList randomWordArray;
+    public static ArrayList guessedWordArray;
     private static ArrayList allGuessesArray;
-    private static int randomWordSize;
+    public static int randomWordSize;
     private static String randomWord;
+    private static int guessesLeft;
     private static int count;
     private static int wrongGuesses;
     private static int totalWrongGuesses;
 
 
     public static void main(String[] args) {
+//        mainMenu();
 
         wordInitializer();
         mainMenu();
+
 
     }
 
@@ -45,7 +48,9 @@ public class GameCLIFinal {
                 "paint", "quick", "radar",
                 "seize", "taste", "under",
                 "value", "wages"
+
         };
+
     }
 
     private static String randomlySelectedWord() {
@@ -83,47 +88,52 @@ public class GameCLIFinal {
             // add _ and print out  empty _______
             guessedWordArray.add('_');
             System.out.print(guessedWordArray.get(j) + " ");
-        }
 
+        }
         System.out.println("\n");
+
         MainGame();
     }
 
-    private static String MainGame() {
+    private static void MainGame() {
 
         // this array will contain all guesses user has made.
         allGuessesArray = new ArrayList<>();
-//        guessesLeft = 7;                            // count down how many guesses are left
+        guessesLeft = 7;                            // count down how many guesses are left
         count = 0;                                  // count will keep track of how many blank spaces have been changed to letters
         totalWrongGuesses = 0;                      // total wrong guesses that user has made
 
-        while (totalWrongGuesses < 7) {
+
+        while (guessesLeft > 0) {
             userGuessedCharacter();
+            guessesLeft--;
             if (count == randomWordSize) {
                 System.out.println("The word is: " + randomWord);
                 System.out.println("Congratulations! you guessed the word with " + totalWrongGuesses + " wrong guesses.");
 
                 // set count to 0 for next game.
                 count = 0;
-                mainMenu();
-                return randomWord;
 
                 // need to fix this
-//                mainMenu();
+                mainMenu();
             }
         }
-        System.out.println("You do not have any guesses left. Thank you for playing!");
-        System.out.println("The correct word is: " + randomWord);
-        mainMenu();
-        return randomWord;
+
+        if (guessesLeft <= 0) {
+            System.out.println("You do not have any guesses left. Thank you for playing!");
+            System.out.println("The correct word is: " + randomWord);
+            mainMenu();
+        }
+
+
     }
 
     private static void userGuessedCharacter() {
 
-//        // print guesses left
-//        System.out.println("you have " +guessesLeft +" guesses left!");
+        // print guesses left
+        System.out.println("you have " + guessesLeft + " guesses left!");
 
-        //print total wrong guesses made / max wrong guesses allowed
+        //print total wrong guesses / total guesses
         System.out.println("total wrong guesses: " + totalWrongGuesses + "/7");
 
         // read user input - Only accept ONE alphabetical character, no blacks, no numbers & no repeat letters.
@@ -151,7 +161,6 @@ public class GameCLIFinal {
                 wrongGuesses++;
             }
         }
-
         // if there were no matches (between input letter and letter in random word) add 1 to total wrong guesses.
         if (wrongGuesses == randomWordSize) {
             totalWrongGuesses++;
@@ -175,6 +184,6 @@ public class GameCLIFinal {
 
     private static void endGame() {
         System.out.println("Thank you for playing!");
-
+        guessesLeft = 0;
     }
 }
