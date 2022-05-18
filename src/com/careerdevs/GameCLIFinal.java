@@ -91,6 +91,8 @@ public class GameCLIFinal {
 
     private static String MainGame() {
 
+        // check if strings match as a secondary check.
+
         // this array will contain all guesses user has made.
         allGuessesArray = new ArrayList<>();
 //        guessesLeft = 7;                            // count down how many guesses are left
@@ -161,7 +163,6 @@ public class GameCLIFinal {
         for (int i = 0; i < randomWordSize; i++) {
             System.out.print(guessedWordArray.get(i) + " ");
         }
-
 
         // print out all letters that were guessed by user.
         System.out.println("\n");
