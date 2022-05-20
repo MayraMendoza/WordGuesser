@@ -157,6 +157,8 @@ public class GameCLIFinal {
         // if there were no matches (between input letter and letter in random word) add 1 to total wrong guesses.
         if (wrongGuesses == randomWordSize) {
             totalWrongGuesses++;
+
+
         }
 
         // print out guessed word array  ------- with correct letters
