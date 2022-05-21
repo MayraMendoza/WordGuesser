@@ -175,9 +175,10 @@ public class GameCLIFinal {
         }
         System.out.println("\n");
     }
-
+// end game
     private static void endGame() {
         System.out.println("Thank you for playing!");
+
 
     }
 }
