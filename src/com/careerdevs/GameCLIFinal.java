@@ -178,7 +178,5 @@ public class GameCLIFinal {
 // end game
     private static void endGame() {
         System.out.println("Thank you for playing!");
-
-
     }
 }
