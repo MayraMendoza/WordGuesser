@@ -175,8 +175,6 @@ public class GameCLIFinal {
         }
         System.out.println("\n");
 
-
-
     }
 // end game
 
